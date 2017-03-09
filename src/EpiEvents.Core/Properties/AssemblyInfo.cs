@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EpiEvents.Core")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("An in-process messaging style event handling for Episerver")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Maris Krivtezs")]
 [assembly: AssemblyProduct("EpiEvents.Core")]
-[assembly: AssemblyCopyright("Copyright ©  2017")]
+[assembly: AssemblyCopyright("Copyright © Maris Krivtezs 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
