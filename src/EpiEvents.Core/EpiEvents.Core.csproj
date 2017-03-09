@@ -102,6 +102,10 @@
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Optional, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Optional.3.2.0\lib\net452\Optional.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="StructureMap, Version=3.1.6.186, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <HintPath>..\..\packages\structuremap-signed.3.1.6.186\lib\net40\StructureMap.dll</HintPath>
       <Private>True</Private>
@@ -148,7 +152,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\CheckedInContent.cs" />
+    <Compile Include="Events\CheckedOutContent.cs" />
+    <Compile Include="Events\CheckingInContent.cs" />
+    <Compile Include="EventsMediator.cs" />
+    <Compile Include="Events\CheckingOutContent.cs" />
+    <Compile Include="Events\CopiedContent.cs" />
+    <Compile Include="Events\CopyingContent.cs" />
+    <Compile Include="Events\CreatedContent.cs" />
+    <Compile Include="Events\CreatedContentLanguage.cs" />
+    <Compile Include="Events\CreatedLanguageBranch.cs" />
+    <Compile Include="Events\CreatingContent.cs" />
+    <Compile Include="Events\CreatingContentLanguage.cs" />
+    <Compile Include="Events\CreatingLanguageBranch.cs" />
+    <Compile Include="Events\DeletedContent.cs" />
+    <Compile Include="Events\DeletedContentLanguage.cs" />
+    <Compile Include="Events\DeletedContentVersion.cs" />
+    <Compile Include="Events\DeletingContent.cs" />
+    <Compile Include="Events\DeletingContentLanguage.cs" />
+    <Compile Include="Events\DeletingContentVersion.cs" />
+    <Compile Include="Events\FailedLoadingContent.cs" />
+    <Compile Include="Events\LoadedChildren.cs" />
+    <Compile Include="Events\FailedLoadingChildren.cs" />
+    <Compile Include="Events\LoadedContent.cs" />
+    <Compile Include="Events\LoadingChildren.cs" />
+    <Compile Include="Events\LoadingContent.cs" />
+    <Compile Include="Events\LoadedDefaultContent.cs" />
+    <Compile Include="Events\LoadingDefaultContent.cs" />
+    <Compile Include="Events\MovedContent.cs" />
+    <Compile Include="Events\MovingContent.cs" />
+    <Compile Include="Events\PublishedContent.cs" />
+    <Compile Include="Events\PublishingContent.cs" />
+    <Compile Include="Events\RejectedContent.cs" />
+    <Compile Include="Events\RejectingContent.cs" />
+    <Compile Include="Events\RequestedApproval.cs" />
+    <Compile Include="Events\RequestingApproval.cs" />
+    <Compile Include="Events\SaveContentNotificationBase.cs" />
+    <Compile Include="Events\SavedContent.cs" />
+    <Compile Include="Events\SavingContent.cs" />
+    <Compile Include="Events\ScheduledContent.cs" />
+    <Compile Include="Events\SchedulingContent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\ValueObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
