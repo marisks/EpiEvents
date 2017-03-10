@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-//this base class comes from Jimmy Bogard
-//http://grabbagoft.blogspot.com/2007/06/generic-value-object-equality.html
+// This base class comes from Jimmy Bogard, but with support of inheritance
+// http://grabbagoft.blogspot.com/2007/06/generic-value-object-equality.html
 
 namespace EpiEvents.Core.Common
 {
@@ -85,7 +85,16 @@ namespace EpiEvents.Core.Common
 
         public static bool operator ==(ValueObject<T> x, ValueObject<T> y)
         {
-            // ReSharper disable once PossibleNullReferenceException
+            if (ReferenceEquals(x, y))
+            {
+                return true;
+            }
+
+            if (((object)x == null) || ((object)y == null))
+            {
+                return false;
+            }
+
             return x.Equals(y);
         }
 
