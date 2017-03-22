@@ -192,6 +192,7 @@
     <Compile Include="Events\SavingContent.cs" />
     <Compile Include="Events\ScheduledContent.cs" />
     <Compile Include="Events\SchedulingContent.cs" />
+    <Compile Include="Initialization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Common\ValueObject.cs" />
   </ItemGroup>
