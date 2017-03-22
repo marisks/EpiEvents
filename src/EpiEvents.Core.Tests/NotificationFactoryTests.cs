@@ -171,7 +171,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 new LoadedContent(
                     args.ContentLink,
-                    args.Content),
+                    args.Content.SomeNotNull()),
                 (Func<ContentEventArgs, LoadedContent>) LoadedContent.FromContentEventArgs
             };
 
