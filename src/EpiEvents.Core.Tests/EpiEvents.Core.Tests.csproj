@@ -183,6 +183,7 @@
     <Compile Include="NotificationFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EventsMediatorInitializedTests.cs" />
+    <Compile Include="SampleHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EpiEvents.Core\EpiEvents.Core.csproj">
