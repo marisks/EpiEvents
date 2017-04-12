@@ -14,10 +14,8 @@ namespace EpiEvents.Core
 
         public EventsMediator(IContentEvents contentEvents, IMediator mediator)
         {
-            if (contentEvents == null) throw new ArgumentNullException(nameof(contentEvents));
-            if (mediator == null) throw new ArgumentNullException(nameof(mediator));
-            _contentEvents = contentEvents;
-            _mediator = mediator;
+            _contentEvents = contentEvents ?? throw new ArgumentNullException(nameof(contentEvents));
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         public void Initialize()

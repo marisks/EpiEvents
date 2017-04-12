@@ -15,11 +15,9 @@ namespace EpiEvents.Core.Events
             AccessLevel requiredAccess,
             IList<ContentReference> deletedDescendents)
         {
-            if (contentLink == null) throw new ArgumentNullException(nameof(contentLink));
-            if (deletedDescendents == null) throw new ArgumentNullException(nameof(deletedDescendents));
-            ContentLink = contentLink;
+            ContentLink = contentLink ?? throw new ArgumentNullException(nameof(contentLink));
             RequiredAccess = requiredAccess;
-            DeletedDescendents = deletedDescendents;
+            DeletedDescendents = deletedDescendents ?? throw new ArgumentNullException(nameof(deletedDescendents));
         }
 
         public ContentReference ContentLink { get; }

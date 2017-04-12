@@ -14,10 +14,8 @@ namespace EpiEvents.Core.Events
             ContentReference targetLink,
             AccessLevel requiredAccess)
         {
-            if (sourceContentLink == null) throw new ArgumentNullException(nameof(sourceContentLink));
-            if (targetLink == null) throw new ArgumentNullException(nameof(targetLink));
-            SourceContentLink = sourceContentLink;
-            TargetLink = targetLink;
+            SourceContentLink = sourceContentLink ?? throw new ArgumentNullException(nameof(sourceContentLink));
+            TargetLink = targetLink ?? throw new ArgumentNullException(nameof(targetLink));
             RequiredAccess = requiredAccess;
         }
 

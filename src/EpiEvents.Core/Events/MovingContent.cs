@@ -16,16 +16,11 @@ namespace EpiEvents.Core.Events
             IEnumerable<ContentReference> descendents,
             IContent content)
         {
-            if (contentLink == null) throw new ArgumentNullException(nameof(contentLink));
-            if (targetLink == null) throw new ArgumentNullException(nameof(targetLink));
-            if (originalParent == null) throw new ArgumentNullException(nameof(originalParent));
-            if (descendents == null) throw new ArgumentNullException(nameof(descendents));
-            if (content == null) throw new ArgumentNullException(nameof(content));
-            ContentLink = contentLink;
-            TargetLink = targetLink;
-            OriginalParent = originalParent;
-            Descendents = descendents;
-            Content = content;
+            ContentLink = contentLink ?? throw new ArgumentNullException(nameof(contentLink));
+            TargetLink = targetLink ?? throw new ArgumentNullException(nameof(targetLink));
+            OriginalParent = originalParent ?? throw new ArgumentNullException(nameof(originalParent));
+            Descendents = descendents ?? throw new ArgumentNullException(nameof(descendents));
+            Content = content ?? throw new ArgumentNullException(nameof(content));
         }
 
         public ContentReference ContentLink { get; }

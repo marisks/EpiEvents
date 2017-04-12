@@ -18,13 +18,10 @@ namespace EpiEvents.Core.Events
             IList<ContentReference> deletedDescendents,
             IList<Guid> deletedItemGuids)
         {
-            if (contentLink == null) throw new ArgumentNullException(nameof(contentLink));
-            if (deletedDescendents == null) throw new ArgumentNullException(nameof(deletedDescendents));
-            if (deletedItemGuids == null) throw new ArgumentNullException(nameof(deletedItemGuids));
-            ContentLink = contentLink;
+            ContentLink = contentLink ?? throw new ArgumentNullException(nameof(contentLink));
             RequiredAccess = requiredAccess;
-            DeletedDescendents = deletedDescendents;
-            DeletedItemGuids = deletedItemGuids;
+            DeletedDescendents = deletedDescendents ?? throw new ArgumentNullException(nameof(deletedDescendents));
+            DeletedItemGuids = deletedItemGuids ?? throw new ArgumentNullException(nameof(deletedItemGuids));
         }
 
         public ContentReference ContentLink { get; }

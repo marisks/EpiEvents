@@ -10,8 +10,7 @@ namespace EpiEvents.Core.Events
     {
         public LoadingDefaultContent(ContentReference parentLink)
         {
-            if (parentLink == null) throw new ArgumentNullException(nameof(parentLink));
-            ParentLink = parentLink;
+            ParentLink = parentLink ?? throw new ArgumentNullException(nameof(parentLink));
         }
 
         public ContentReference ParentLink { get; }

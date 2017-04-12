@@ -11,8 +11,7 @@ namespace EpiEvents.Core.Events
     {
         public CreatingLanguageBranch(ContentReference contentLink, AccessLevel requiredAccess)
         {
-            if (contentLink == null) throw new ArgumentNullException(nameof(contentLink));
-            ContentLink = contentLink;
+            ContentLink = contentLink ?? throw new ArgumentNullException(nameof(contentLink));
             RequiredAccess = requiredAccess;
         }
 

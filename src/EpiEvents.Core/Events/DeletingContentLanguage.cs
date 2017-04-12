@@ -18,12 +18,10 @@ namespace EpiEvents.Core.Events
             Option<CultureInfo> masterLanguage,
             AccessLevel requiredAccess)
         {
-            if (contentLink == null) throw new ArgumentNullException(nameof(contentLink));
-            if (content == null) throw new ArgumentNullException(nameof(content));
             if (language == null) throw new ArgumentNullException(nameof(language));
             if (masterLanguage == null) throw new ArgumentNullException(nameof(masterLanguage));
-            ContentLink = contentLink;
-            Content = content;
+            ContentLink = contentLink ?? throw new ArgumentNullException(nameof(contentLink));
+            Content = content ?? throw new ArgumentNullException(nameof(content));
             Language = language;
             MasterLanguage = masterLanguage;
             RequiredAccess = requiredAccess;

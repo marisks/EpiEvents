@@ -11,10 +11,8 @@ namespace EpiEvents.Core.Events
     {
         public LoadedChildren(ContentReference contentLink, IEnumerable<IContent> childrenItems)
         {
-            if (contentLink == null) throw new ArgumentNullException(nameof(contentLink));
-            if (childrenItems == null) throw new ArgumentNullException(nameof(childrenItems));
-            ContentLink = contentLink;
-            ChildrenItems = childrenItems;
+            ContentLink = contentLink ?? throw new ArgumentNullException(nameof(contentLink));
+            ChildrenItems = childrenItems ?? throw new ArgumentNullException(nameof(childrenItems));
         }
 
         public ContentReference ContentLink { get; }

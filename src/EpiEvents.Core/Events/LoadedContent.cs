@@ -11,9 +11,8 @@ namespace EpiEvents.Core.Events
     {
         public LoadedContent(ContentReference contentLink, Option<IContent> content)
         {
-            if (contentLink == null) throw new ArgumentNullException(nameof(contentLink));
             if (content == null) throw new ArgumentNullException(nameof(content));
-            ContentLink = contentLink;
+            ContentLink = contentLink ?? throw new ArgumentNullException(nameof(contentLink));
             Content = content;
         }
 

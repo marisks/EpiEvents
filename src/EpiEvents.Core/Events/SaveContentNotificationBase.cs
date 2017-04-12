@@ -17,10 +17,8 @@ namespace EpiEvents.Core.Events
             StatusTransition transition,
             AccessLevel requiredAccess)
         {
-            if (contentLink == null) throw new ArgumentNullException(nameof(contentLink));
-            if (content == null) throw new ArgumentNullException(nameof(content));
-            ContentLink = contentLink;
-            Content = content;
+            ContentLink = contentLink ?? throw new ArgumentNullException(nameof(contentLink));
+            Content = content ?? throw new ArgumentNullException(nameof(content));
             Action = action;
             Transition = transition;
             RequiredAccess = requiredAccess;
