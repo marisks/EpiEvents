@@ -159,6 +159,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AsyncHelper.cs" />
     <Compile Include="Events\CheckedInContent.cs" />
     <Compile Include="Events\CheckedOutContent.cs" />
     <Compile Include="Events\CheckingInContent.cs" />

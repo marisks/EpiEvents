@@ -1,4 +1,5 @@
 using System;
+using EpiEvents.Core.Common;
 using EpiEvents.Core.Events;
 using EPiServer;
 using EPiServer.Core;
@@ -58,171 +59,170 @@ namespace EpiEvents.Core
 
         private void OnCreatingContent(object sender, ContentEventArgs e)
         {
-            if (e is CopyContentEventArgs) _mediator.Publish(CopyingContent.FromContentEventArgs(e)).Wait();
-
-            if (e is SaveContentEventArgs) _mediator.Publish(CreatingContent.FromContentEventArgs(e)).Wait();
+            if (e is CopyContentEventArgs) AsyncHelper.RunSync(() => _mediator.Publish(CopyingContent.FromContentEventArgs(e)));
+            if (e is SaveContentEventArgs) AsyncHelper.RunSync(() => _mediator.Publish(CreatingContent.FromContentEventArgs(e)));
         }
 
         private void OnDeletingContentVersion(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(DeletingContentVersion.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(DeletingContentVersion.FromContentEventArgs(e)));
         }
 
         private void OnDeletedContentVersion(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(DeletedContentVersion.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(DeletedContentVersion.FromContentEventArgs(e)));
         }
 
         private void OnSavingContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(SavingContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(SavingContent.FromContentEventArgs(e)));
         }
 
         private void OnSavedContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(SavedContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(SavedContent.FromContentEventArgs(e)));
         }
 
         private void OnMovingContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(MovingContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(MovingContent.FromContentEventArgs(e)));
         }
 
         private void OnMovedContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(MovedContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(MovedContent.FromContentEventArgs(e)));
         }
 
         private void OnDeletingContentLanguage(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(DeletingContentLanguage.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(DeletingContentLanguage.FromContentEventArgs(e)));
         }
 
         private void OnDeletedContentLanguage(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(DeletedContentLanguage.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(DeletedContentLanguage.FromContentEventArgs(e)));
         }
 
         private void OnCreatingContentLanguage(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(CreatingContentLanguage.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(CreatingContentLanguage.FromContentEventArgs(e)));
         }
 
         private void OnCreatedContentLanguage(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(CreatedContentLanguage.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(CreatedContentLanguage.FromContentEventArgs(e)));
         }
 
         private void OnDeletingContent(object sender, DeleteContentEventArgs e)
         {
-            _mediator.Publish(DeletingContent.FromDeleteContentArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(DeletingContent.FromDeleteContentArgs(e)));
         }
 
         private void OnDeletedContent(object sender, DeleteContentEventArgs e)
         {
-            _mediator.Publish(DeletedContent.FromDeleteContentArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(DeletedContent.FromDeleteContentArgs(e)));
         }
 
         private void OnSchedulingContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(SchedulingContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(SchedulingContent.FromContentEventArgs(e)));
         }
 
         private void OnScheduledContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(ScheduledContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(ScheduledContent.FromContentEventArgs(e)));
         }
 
         private void OnCheckingOutContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(CheckingOutContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(CheckingOutContent.FromContentEventArgs(e)));
         }
 
         private void OnCheckedOutContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(CheckedOutContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(CheckedOutContent.FromContentEventArgs(e)));
         }
 
         private void OnRejectingContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(RejectingContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(RejectingContent.FromContentEventArgs(e)));
         }
 
         private void OnRejectedContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(RejectedContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(RejectedContent.FromContentEventArgs(e)));
         }
 
         private void OnRequestedApproval(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(RequestedApproval.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(RequestedApproval.FromContentEventArgs(e)));
         }
 
         private void OnRequestingApproval(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(RequestingApproval.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(RequestingApproval.FromContentEventArgs(e)));
         }
 
         private void OnPublishedContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(PublishedContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(PublishedContent.FromContentEventArgs(e)));
         }
 
         private void OnPublishingContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(PublishingContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(PublishingContent.FromContentEventArgs(e)));
         }
 
         private void OnLoadingDefaultContent(object sender, ContentEventArgs e)
         {
-            if (LoadingDefaultContent.Match(e)) _mediator.Publish(LoadingDefaultContent.FromContentEventArgs(e)).Wait();
-            if (CreatingLanguageBranch.Match(e)) _mediator.Publish(CreatingLanguageBranch.FromContentEventArgs(e)).Wait();
+            if (LoadingDefaultContent.Match(e)) AsyncHelper.RunSync(() => _mediator.Publish(LoadingDefaultContent.FromContentEventArgs(e)));
+            if (CreatingLanguageBranch.Match(e)) AsyncHelper.RunSync(() => _mediator.Publish(CreatingLanguageBranch.FromContentEventArgs(e)));
         }
 
         private void OnLoadedDefaultContent(object sender, ContentEventArgs e)
         {
-            if (LoadedDefaultContent.Match(e)) _mediator.Publish(LoadedDefaultContent.FromContentEventArgs(e)).Wait();
-            if (CreatedLanguageBranch.Match(e)) _mediator.Publish(CreatedLanguageBranch.FromContentEventArgs(e)).Wait();
+            if (LoadedDefaultContent.Match(e)) AsyncHelper.RunSync(() => _mediator.Publish(LoadedDefaultContent.FromContentEventArgs(e)));
+            if (CreatedLanguageBranch.Match(e)) AsyncHelper.RunSync(() => _mediator.Publish(CreatedLanguageBranch.FromContentEventArgs(e)));
         }
 
         private void OnLoadingContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(LoadingContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(LoadingContent.FromContentEventArgs(e)));
         }
 
         private void OnLoadedContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(LoadedContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(LoadedContent.FromContentEventArgs(e)));
         }
 
         private void OnFailedLoadingContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(FailedLoadingContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(FailedLoadingContent.FromContentEventArgs(e)));
         }
 
         private void OnLoadingChildren(object sender, ChildrenEventArgs e)
         {
-            _mediator.Publish(LoadingChildren.FromChildrenEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(LoadingChildren.FromChildrenEventArgs(e)));
         }
 
         private void OnLoadedChildren(object sender, ChildrenEventArgs e)
         {
-            _mediator.Publish(LoadedChildren.FromChildrenEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(LoadedChildren.FromChildrenEventArgs(e)));
         }
 
         private void OnFailedLoadingChildren(object sender, ChildrenEventArgs e)
         {
-            _mediator.Publish(FailedLoadingChildren.FromChildrenEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(FailedLoadingChildren.FromChildrenEventArgs(e)));
         }
 
         private void OnCheckingInContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(CheckingInContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(CheckingInContent.FromContentEventArgs(e)));
         }
 
         private void OnCheckedInContent(object sender, ContentEventArgs e)
         {
-            _mediator.Publish(CheckedInContent.FromContentEventArgs(e)).Wait();
+            AsyncHelper.RunSync(() => _mediator.Publish(CheckedInContent.FromContentEventArgs(e)));
         }
     }
 }
