@@ -202,6 +202,8 @@ FakesAssemblies/
 product_images/
 .idea
 node_modules
+packaging/
+.fake
 
 License.config
 *.orig
