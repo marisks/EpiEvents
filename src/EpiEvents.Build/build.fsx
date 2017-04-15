@@ -13,11 +13,15 @@ let assemblyVersion = "1.0.0"
 
 let solutionPath = "../../EpiEvents.sln"
 let buildDir = "../EpiEvents.Core/bin"
+let packagesDir = "../../packages/"
 let packagingRoot = "../../packaging/"
 let packagingDir = packagingRoot @@ "core"
 let assemblyInfoPath = "../EpiEvents.Core/Properties/AssemblyInfo.cs"
 
 let buildMode = getBuildParamOrDefault "buildMode" "Release"
+
+let PackageDependency packageName =
+    packageName, GetPackageVersion packagesDir packageName 
 
 MSBuildDefaults <- {
     MSBuildDefaults with
@@ -76,6 +80,12 @@ Target "CreateCorePackage" (fun _ ->
             Version = assemblyVersion
             ReleaseNotes = releaseNotes
             Publish = false
+            Dependencies =
+                [
+                PackageDependency "EPiServer.CMS.Core"
+                PackageDependency "MediatR"
+                PackageDependency "Optional"
+                ]
             }) "core.nuspec"
 )
 
