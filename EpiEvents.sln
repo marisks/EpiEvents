@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpiEvents.Core", "src\EpiEvents.Core\EpiEvents.Core.csproj", "{3A2B2296-2991-411B-8648-1249DC62BE68}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpiEvents.Core.Tests", "src\EpiEvents.Core.Tests\EpiEvents.Core.Tests.csproj", "{64AD2A73-001A-443B-959D-2ADA82B83064}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "EpiEvents.Build", "src\EpiEvents.Build\EpiEvents.Build.fsproj", "{BF7F1A48-4390-476C-93B4-9CBB134DB8AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{64AD2A73-001A-443B-959D-2ADA82B83064}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64AD2A73-001A-443B-959D-2ADA82B83064}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64AD2A73-001A-443B-959D-2ADA82B83064}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF7F1A48-4390-476C-93B4-9CBB134DB8AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF7F1A48-4390-476C-93B4-9CBB134DB8AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF7F1A48-4390-476C-93B4-9CBB134DB8AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF7F1A48-4390-476C-93B4-9CBB134DB8AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
