@@ -18,8 +18,6 @@ let packagingRoot = "../../packaging/"
 let packagingDir = packagingRoot @@ "core"
 let assemblyInfoPath = "../EpiEvents.Core/Properties/AssemblyInfo.cs"
 
-let buildMode = getBuildParamOrDefault "buildMode" "Release"
-
 let PackageDependency packageName =
     packageName, GetPackageVersion packagesDir packageName 
 
@@ -45,6 +43,8 @@ Target "AssemblyInfo" (fun _ ->
         Attribute.Description projectDescription
         Attribute.Title projectName]
 )
+
+let buildMode = getBuildParamOrDefault "buildMode" "Release"
 
 let setParams defaults = {
     defaults with
