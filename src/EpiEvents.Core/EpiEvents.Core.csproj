@@ -166,6 +166,7 @@
     <Compile Include="EventsMediator.cs" />
     <Compile Include="Events\CheckingOutContent.cs" />
     <Compile Include="Events\CopiedContent.cs" />
+    <Compile Include="Events\CopyiedContent.cs" />
     <Compile Include="Events\CopyingContent.cs" />
     <Compile Include="Events\CreatedContent.cs" />
     <Compile Include="Events\CreatedContentLanguage.cs" />

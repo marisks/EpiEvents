@@ -53,6 +53,13 @@ namespace EpiEvents.Core
             _contentEvents.DeletingContentVersion += OnDeletingContentVersion;
             _contentEvents.DeletedContentVersion += OnDeletedContentVersion;
             _contentEvents.CreatingContent += OnCreatingContent;
+            _contentEvents.CreatedContent += OnCreatedContent;
+        }
+
+        private void OnCreatedContent(object sender, ContentEventArgs e)
+        {
+            if (e is CopyContentEventArgs) AsyncHelper.RunSync(() => _mediator.Publish(CopyiedContent.FromContentEventArgs(e)));
+            if (e is SaveContentEventArgs) AsyncHelper.RunSync(() => _mediator.Publish(CreatedContent.FromContentEventArgs(e)));
         }
 
         private void OnCreatingContent(object sender, ContentEventArgs e)

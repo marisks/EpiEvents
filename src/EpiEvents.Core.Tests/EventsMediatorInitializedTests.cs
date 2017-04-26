@@ -413,6 +413,16 @@ namespace EpiEvents.Core.Tests
             ShouldPublishNotificationWith<CreatingContent>(actual => actual == expected);
         }
 
+        public void it_publishes_CreatedContent_when_SaveContentEventArgs()
+        {
+            var ev = (ContentEventArgs)_fixture.Create<SaveContentEventArgs>();
+            var expected = CreatedContent.FromContentEventArgs(ev);
+
+            _contentEvents.CreatedContent += Raise.With(ev);
+
+            ShouldPublishNotificationWith<CreatedContent>(actual => actual == expected);
+        }
+
         public void it_publishes_CopyingContent_when_CopyContentEventArgs()
         {
             var ev = (ContentEventArgs)_fixture.Create<CopyContentEventArgs>();
@@ -421,6 +431,16 @@ namespace EpiEvents.Core.Tests
             _contentEvents.CreatingContent += Raise.With(ev);
 
             ShouldPublishNotificationWith<CopyingContent>(actual => actual == expected);
+        }
+
+        public void it_publishes_CopyiedContent_when_CopyContentEventArgs()
+        {
+            var ev = (ContentEventArgs)_fixture.Create<CopyContentEventArgs>();
+            var expected = CopyiedContent.FromContentEventArgs(ev);
+
+            _contentEvents.CreatedContent += Raise.With(ev);
+
+            ShouldPublishNotificationWith<CopyiedContent>(actual => actual == expected);
         }
 
         private ContentEventArgs ContentEventArgWithEmptyContentLink()
