@@ -183,6 +183,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventsMediatorDisabledLoadingEventsTests.cs" />
     <Compile Include="FactoryMethodDataAttribute.cs" />
     <Compile Include="FromFactoryMethodTestConvention.cs" />
     <Compile Include="NotificationFactoryTests.cs" />

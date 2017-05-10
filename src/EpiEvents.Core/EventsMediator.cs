@@ -9,23 +9,29 @@ namespace EpiEvents.Core
 {
     public class EventsMediator
     {
+        private readonly ISettings _settings;
         private readonly IContentEvents _contentEvents;
         private readonly IMediator _mediator;
 
-        public EventsMediator(IContentEvents contentEvents, IMediator mediator)
+        public EventsMediator(IContentEvents contentEvents, IMediator mediator, ISettings settings)
         {
+            _settings = settings ?? throw new ArgumentNullException(nameof(settings));
             _contentEvents = contentEvents ?? throw new ArgumentNullException(nameof(contentEvents));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         public void Initialize()
         {
-            _contentEvents.LoadingChildren += OnLoadingChildren;
-            _contentEvents.LoadedChildren += OnLoadedChildren;
-            _contentEvents.FailedLoadingChildren += OnFailedLoadingChildren;
-            _contentEvents.LoadingContent += OnLoadingContent;
-            _contentEvents.LoadedContent += OnLoadedContent;
-            _contentEvents.FailedLoadingContent += OnFailedLoadingContent;
+            if (_settings.EnableLoadingEvents)
+            {
+                _contentEvents.LoadingChildren += OnLoadingChildren;
+                _contentEvents.LoadedChildren += OnLoadedChildren;
+                _contentEvents.FailedLoadingChildren += OnFailedLoadingChildren;
+                _contentEvents.LoadingContent += OnLoadingContent;
+                _contentEvents.LoadedContent += OnLoadedContent;
+                _contentEvents.FailedLoadingContent += OnFailedLoadingContent;
+            }
+
             _contentEvents.LoadingDefaultContent += OnLoadingDefaultContent;
             _contentEvents.LoadedDefaultContent += OnLoadedDefaultContent;
             _contentEvents.PublishingContent += OnPublishingContent;

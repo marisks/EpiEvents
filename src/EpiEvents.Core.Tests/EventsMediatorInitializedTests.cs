@@ -24,10 +24,13 @@ namespace EpiEvents.Core.Tests
         {
             _contentEvents = FakeItEasy.A.Fake<IContentEvents>();
             _mediator = FakeItEasy.A.Fake<IMediator>();
+            var settings = FakeItEasy.A.Fake<ISettings>();
+            FakeItEasy.A.CallTo(() => settings.EnableLoadingEvents).Returns(true);
+
             _fixture = new Fixture();
             _fixture.Customize(new AutoFakeItEasyCustomization());
 
-            var eventsMediator = new EventsMediator(_contentEvents, _mediator);
+            var eventsMediator = new EventsMediator(_contentEvents, _mediator, settings);
 
             eventsMediator.Initialize();
         }
