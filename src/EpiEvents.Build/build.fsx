@@ -7,9 +7,9 @@ let authors = [company]
 let projectName = "EpiEvents.Core"
 let projectDescription = "An in-process messaging style event handling for Episerver"
 let projectSummary = projectDescription
-let releaseNotes = "Initial release"
-let copyright = "Copyright © Maris Krivtezs 2017"
-let assemblyVersion = "1.0.0"
+let releaseNotes = "Added approval events."
+let copyright = "Copyright © Maris Krivtezs 2018"
+let assemblyVersion = "1.1.0"
 
 let solutionPath = "../../EpiEvents.sln"
 let buildDir = "../EpiEvents.Core/bin"
@@ -19,7 +19,7 @@ let packagingDir = packagingRoot @@ "core"
 let assemblyInfoPath = "../EpiEvents.Core/Properties/AssemblyInfo.cs"
 
 let PackageDependency packageName =
-    packageName, GetPackageVersion packagesDir packageName 
+    packageName, GetPackageVersion packagesDir packageName
 
 MSBuildDefaults <- {
     MSBuildDefaults with
@@ -68,7 +68,7 @@ Target "CreateCorePackage" (fun _ ->
     CopyFile net45Dir (buildDir @@ "Release/EpiEvents.Core.pdb")
 
     NuGet (fun p ->
-        {p with 
+        {p with
             Authors = authors
             Project = projectName
             Description = projectDescription
