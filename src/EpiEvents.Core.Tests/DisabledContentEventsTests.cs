@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using EpiEvents.Core.Common;
 using EpiEvents.Core.Events;
 using EPiServer;
@@ -36,7 +35,7 @@ namespace EpiEvents.Core.Tests
         {
             act(_contentEvents, ev);
 
-            ShouldNotPublishNotificationWith<TNotification>();
+            _mediator.ShouldNotPublishNotificationWith<TNotification>();
         }
 
         public static IEnumerable<object[]> GetParameters()
@@ -109,12 +108,6 @@ namespace EpiEvents.Core.Tests
         private static object A<T1, T2>(Action<T1, T2> action)
         {
             return action;
-        }
-
-        private void ShouldNotPublishNotificationWith<T>()
-            where T : INotification
-        {
-            FakeItEasy.A.CallTo(() => _mediator.Publish(A<T>.Ignored, A<CancellationToken>.Ignored)).MustNotHaveHappened();
         }
     }
 }

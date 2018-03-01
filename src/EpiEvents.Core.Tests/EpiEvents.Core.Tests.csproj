@@ -195,6 +195,7 @@
     <Compile Include="DisabledContentEventsTests.cs" />
     <Compile Include="FactoryMethodDataAttribute.cs" />
     <Compile Include="FromFactoryMethodTestConvention.cs" />
+    <Compile Include="MediatorAssertionExtensions.cs" />
     <Compile Include="NotificationFactoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AllEnabledContentEventsTests.cs" />

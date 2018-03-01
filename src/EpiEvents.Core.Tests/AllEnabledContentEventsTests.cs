@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading;
 using EpiEvents.Core.Common;
 using EpiEvents.Core.Events;
 using EPiServer;
@@ -42,7 +40,7 @@ namespace EpiEvents.Core.Tests
         {
             act(_contentEvents, ev);
 
-            ShouldPublishNotificationWith<TNotification>(actual => actual == expected);
+            _mediator.ShouldPublishNotificationWith<TNotification>(actual => actual == expected);
         }
 
         public static IEnumerable<object[]> GetParameters()
@@ -337,7 +335,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.LoadingDefaultContent += Raise.With(ev);
 
-            ShouldPublishNotificationWith<LoadingDefaultContent>(actual => actual == expected);
+            _mediator.ShouldPublishNotificationWith<LoadingDefaultContent>(actual => actual == expected);
         }
 
         public void it_does_not_publish_LoadingDefaultContent_when_contentLink_is_not_empty()
@@ -346,7 +344,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.LoadingDefaultContent += Raise.With(ev);
 
-            ShouldNotPublishNotificationWith<LoadingDefaultContent>();
+            _mediator.ShouldNotPublishNotificationWith<LoadingDefaultContent>();
         }
 
         public void it_publishes_LoadedDefaultContent_when_contentLink_is_empty()
@@ -356,7 +354,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.LoadedDefaultContent += Raise.With(ev);
 
-            ShouldPublishNotificationWith<LoadedDefaultContent>(actual => actual == expected);
+            _mediator.ShouldPublishNotificationWith<LoadedDefaultContent>(actual => actual == expected);
         }
 
         public void it_does_not_publish_LoadedDefaultContent_when_contentLink_is_not_empty()
@@ -365,7 +363,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.LoadedDefaultContent += Raise.With(ev);
 
-            ShouldNotPublishNotificationWith<LoadedDefaultContent>();
+            _mediator.ShouldNotPublishNotificationWith<LoadedDefaultContent>();
         }
 
         public void it_publishes_CreatingLanguageBranch_when_contentLink_is_not_empty()
@@ -375,7 +373,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.LoadingDefaultContent += Raise.With(ev);
 
-            ShouldPublishNotificationWith<CreatingLanguageBranch>(actual => actual == expected);
+            _mediator.ShouldPublishNotificationWith<CreatingLanguageBranch>(actual => actual == expected);
         }
 
         public void it_does_not_publish_CreatingLanguageBranch_when_contentLink_is_empty()
@@ -384,7 +382,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.LoadingDefaultContent += Raise.With(ev);
 
-            ShouldNotPublishNotificationWith<CreatingLanguageBranch>();
+            _mediator.ShouldNotPublishNotificationWith<CreatingLanguageBranch>();
         }
 
         public void it_publishes_CreatedLanguageBranch_when_contentLink_is_not_empty()
@@ -394,7 +392,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.LoadedDefaultContent += Raise.With(ev);
 
-            ShouldPublishNotificationWith<CreatedLanguageBranch>(actual => actual == expected);
+            _mediator.ShouldPublishNotificationWith<CreatedLanguageBranch>(actual => actual == expected);
         }
 
         public void it_does_not_publish_CreatedLanguageBranch_when_contentLink_is_empty()
@@ -403,7 +401,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.LoadedDefaultContent += Raise.With(ev);
 
-            ShouldNotPublishNotificationWith<CreatedLanguageBranch>();
+            _mediator.ShouldNotPublishNotificationWith<CreatedLanguageBranch>();
         }
 
         public void it_publishes_CreatingContent_when_SaveContentEventArgs()
@@ -413,7 +411,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.CreatingContent += Raise.With(ev);
 
-            ShouldPublishNotificationWith<CreatingContent>(actual => actual == expected);
+            _mediator.ShouldPublishNotificationWith<CreatingContent>(actual => actual == expected);
         }
 
         public void it_publishes_CreatedContent_when_SaveContentEventArgs()
@@ -423,7 +421,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.CreatedContent += Raise.With(ev);
 
-            ShouldPublishNotificationWith<CreatedContent>(actual => actual == expected);
+            _mediator.ShouldPublishNotificationWith<CreatedContent>(actual => actual == expected);
         }
 
         public void it_publishes_CopyingContent_when_CopyContentEventArgs()
@@ -433,7 +431,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.CreatingContent += Raise.With(ev);
 
-            ShouldPublishNotificationWith<CopyingContent>(actual => actual == expected);
+            _mediator.ShouldPublishNotificationWith<CopyingContent>(actual => actual == expected);
         }
 
         public void it_publishes_CopyiedContent_when_CopyContentEventArgs()
@@ -443,7 +441,7 @@ namespace EpiEvents.Core.Tests
 
             _contentEvents.CreatedContent += Raise.With(ev);
 
-            ShouldPublishNotificationWith<CopyiedContent>(actual => actual == expected);
+            _mediator.ShouldPublishNotificationWith<CopyiedContent>(actual => actual == expected);
         }
 
         private ContentEventArgs ContentEventArgWithEmptyContentLink()
@@ -456,18 +454,6 @@ namespace EpiEvents.Core.Tests
         private static object A<T1, T2>(Action<T1, T2> action)
         {
             return action;
-        }
-
-        private void ShouldPublishNotificationWith<T>(Expression<Func<T, bool>> predicate)
-            where T : INotification
-        {
-            FakeItEasy.A.CallTo(() => _mediator.Publish(A<T>.That.Matches(predicate), A<CancellationToken>.Ignored)).MustHaveHappened();
-        }
-
-        private void ShouldNotPublishNotificationWith<T>()
-            where T : INotification
-        {
-            FakeItEasy.A.CallTo(() => _mediator.Publish(A<T>.Ignored, A<CancellationToken>.Ignored)).MustNotHaveHappened();
         }
     }
 }
