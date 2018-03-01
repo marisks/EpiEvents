@@ -199,12 +199,10 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 
-product_images/
 .idea
 node_modules
 packaging/
 .fake
 
-License.config
 *.orig
 *.dev.config
