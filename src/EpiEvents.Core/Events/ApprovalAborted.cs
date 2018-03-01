@@ -3,30 +3,27 @@ using EPiServer.Approvals;
 
 namespace EpiEvents.Core.Events
 {
-    public class StepStarted : ApprovalStepNotificationBase<StepStarted>
+    public class ApprovalAborted : ApprovalNotificationBase<ApprovalAborted>
     {
-        private StepStarted(
-            int stepIndex,
+        private ApprovalAborted(
             int approvalId,
             Uri approvalReference,
             string comment,
             int definitionVersionId,
             bool forced,
             string username)
-            : base(stepIndex,
-                 approvalId,
-                 approvalReference,
-                 comment,
-                 definitionVersionId,
-                 forced,
-                 username)
+            : base(approvalId,
+                approvalReference,
+                comment,
+                definitionVersionId,
+                forced,
+                username)
         {
         }
 
-        public static StepStarted FromApprovalStepEventArgs(ApprovalStepEventArgs args)
+        public static ApprovalAborted FromApprovalEventArgs(ApprovalEventArgs args)
         {
-            return new StepStarted(
-                args.StepIndex,
+            return new ApprovalAborted(
                 args.ApprovalID,
                 args.ApprovalReference,
                 args.Comment,

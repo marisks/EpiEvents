@@ -64,7 +64,13 @@ namespace EpiEvents.Core
             _contentEvents.CreatingContent += OnCreatingContent;
             _contentEvents.CreatedContent += OnCreatedContent;
 
-            _approvalEngineEvents.StepStarted += OnStepStarted;
+            _approvalEngineEvents.StepStarted += OnApprovalStepStarted;
+            _approvalEngineEvents.StepApproved += OnApprovalStepApproved;
+            _approvalEngineEvents.StepRejected += OnApprovalStepRejected;
+            _approvalEngineEvents.Started += OnApprovalStarted;
+            _approvalEngineEvents.Aborted += OnApprovalAborted;
+            _approvalEngineEvents.Approved += OnApprovalApproved;
+            _approvalEngineEvents.Rejected += OnApprovalRejected;
         }
 
         private void OnCreatedContent(object sender, ContentEventArgs e)
@@ -241,9 +247,39 @@ namespace EpiEvents.Core
             AsyncHelper.RunSync(() => _mediator.Publish(CheckedInContent.FromContentEventArgs(e)));
         }
 
-        private void OnStepStarted(ApprovalStepEventArgs e)
+        private void OnApprovalStepStarted(ApprovalStepEventArgs e)
         {
-            AsyncHelper.RunSync(() => _mediator.Publish(StepStarted.FromApprovalStepEventArgs(e)));
+            AsyncHelper.RunSync(() => _mediator.Publish(ApprovalStepStarted.FromApprovalStepEventArgs(e)));
+        }
+
+        private void OnApprovalStepApproved(ApprovalStepEventArgs e)
+        {
+            AsyncHelper.RunSync(() => _mediator.Publish(ApprovalStepApproved.FromApprovalStepEventArgs(e)));
+        }
+
+        private void OnApprovalStepRejected(ApprovalStepEventArgs e)
+        {
+            AsyncHelper.RunSync(() => _mediator.Publish(ApprovalStepRejected.FromApprovalStepEventArgs(e)));
+        }
+
+        private void OnApprovalStarted(ApprovalEventArgs e)
+        {
+            AsyncHelper.RunSync(() => _mediator.Publish(ApprovalStarted.FromApprovalEventArgs(e)));
+        }
+
+        private void OnApprovalAborted(ApprovalEventArgs e)
+        {
+            AsyncHelper.RunSync(() => _mediator.Publish(ApprovalAborted.FromApprovalEventArgs(e)));
+        }
+
+        private void OnApprovalApproved(ApprovalEventArgs e)
+        {
+            AsyncHelper.RunSync(() => _mediator.Publish(ApprovalApproved.FromApprovalEventArgs(e)));
+        }
+
+        private void OnApprovalRejected(ApprovalEventArgs e)
+        {
+            AsyncHelper.RunSync(() => _mediator.Publish(ApprovalRejected.FromApprovalEventArgs(e)));
         }
     }
 }

@@ -55,16 +55,63 @@ namespace EpiEvents.Core.Tests
             yield return new[]
             {
                 args,
-                StepStarted.FromApprovalStepEventArgs(args),
+                ApprovalStepStarted.FromApprovalStepEventArgs(args),
                 A<IApprovalEngineEvents, ApprovalStepEventArgs>(
                     (approvalEngineEvents, e) => approvalEngineEvents.StepStarted += Raise.With<ApprovalStepEventHandler>(e))
+            };
+
+            yield return new[]
+            {
+                args,
+                ApprovalStepApproved.FromApprovalStepEventArgs(args),
+                A<IApprovalEngineEvents, ApprovalStepEventArgs>(
+                    (approvalEngineEvents, e) => approvalEngineEvents.StepApproved += Raise.With<ApprovalStepEventHandler>(e))
+            };
+
+            yield return new[]
+            {
+                args,
+                ApprovalStepRejected.FromApprovalStepEventArgs(args),
+                A<IApprovalEngineEvents, ApprovalStepEventArgs>(
+                    (approvalEngineEvents, e) => approvalEngineEvents.StepRejected += Raise.With<ApprovalStepEventHandler>(e))
             };
         }
 
         private static IEnumerable<object[]> FromApprovalEventArgs(Fixture fixture)
         {
             var args = fixture.Create<ApprovalEventArgs>();
-            yield break;
+
+            yield return new[]
+            {
+                args,
+                ApprovalStarted.FromApprovalEventArgs(args),
+                A<IApprovalEngineEvents, ApprovalEventArgs>(
+                    (approvalEngineEvents, e) => approvalEngineEvents.Started += Raise.With<ApprovalEventHandler>(e))
+            };
+
+            yield return new[]
+            {
+                args,
+                ApprovalAborted.FromApprovalEventArgs(args),
+                A<IApprovalEngineEvents, ApprovalEventArgs>(
+                    (approvalEngineEvents, e) => approvalEngineEvents.Aborted += Raise.With<ApprovalEventHandler>(e))
+            };
+
+            yield return new[]
+            {
+                args,
+                ApprovalApproved.FromApprovalEventArgs(args),
+                A<IApprovalEngineEvents, ApprovalEventArgs>(
+                    (approvalEngineEvents, e) => approvalEngineEvents.Approved += Raise.With<ApprovalEventHandler>(e))
+            };
+
+            yield return new[]
+            {
+                args,
+                ApprovalRejected.FromApprovalEventArgs(args),
+                A<IApprovalEngineEvents, ApprovalEventArgs>(
+                    (approvalEngineEvents, e) => approvalEngineEvents.Rejected += Raise.With<ApprovalEventHandler>(e))
+            };
         }
 
         private static object A<T1, T2>(Action<T1, T2> action)

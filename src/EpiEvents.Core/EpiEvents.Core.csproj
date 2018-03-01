@@ -170,6 +170,11 @@
   <ItemGroup>
     <Compile Include="Common\AsyncHelper.cs" />
     <Compile Include="DefaultSettings.cs" />
+    <Compile Include="Events\ApprovalAborted.cs" />
+    <Compile Include="Events\ApprovalApproved.cs" />
+    <Compile Include="Events\ApprovalNotificationBase.cs" />
+    <Compile Include="Events\ApprovalRejected.cs" />
+    <Compile Include="Events\ApprovalStarted.cs" />
     <Compile Include="Events\ApprovalStepNotificationBase.cs" />
     <Compile Include="Events\CheckedInContent.cs" />
     <Compile Include="Events\CheckedOutContent.cs" />
@@ -212,7 +217,9 @@
     <Compile Include="Events\SavingContent.cs" />
     <Compile Include="Events\ScheduledContent.cs" />
     <Compile Include="Events\SchedulingContent.cs" />
-    <Compile Include="Events\StepStarted.cs" />
+    <Compile Include="Events\ApprovalStepApproved.cs" />
+    <Compile Include="Events\ApprovalStepRejected.cs" />
+    <Compile Include="Events\ApprovalStepStarted.cs" />
     <Compile Include="Initialization.cs" />
     <Compile Include="ISettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
