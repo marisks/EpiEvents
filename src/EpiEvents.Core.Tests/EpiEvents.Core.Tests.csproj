@@ -192,6 +192,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApprovalEngineEventsTests.cs" />
     <Compile Include="DisabledContentEventsTests.cs" />
     <Compile Include="FactoryMethodDataAttribute.cs" />
     <Compile Include="FromFactoryMethodTestConvention.cs" />

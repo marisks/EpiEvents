@@ -9,6 +9,7 @@ using MediatR;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.AutoFakeItEasy;
 using System.Linq;
+using EPiServer.Approvals;
 
 namespace EpiEvents.Core.Tests
 {
@@ -21,6 +22,7 @@ namespace EpiEvents.Core.Tests
         public AllEnabledContentEventsTests()
         {
             _contentEvents = FakeItEasy.A.Fake<IContentEvents>();
+            var approvalEngineEvents = FakeItEasy.A.Fake<IApprovalEngineEvents>();
             _mediator = FakeItEasy.A.Fake<IMediator>();
             var settings = FakeItEasy.A.Fake<ISettings>();
             FakeItEasy.A.CallTo(() => settings.EnableLoadingEvents).Returns(true);
@@ -28,7 +30,7 @@ namespace EpiEvents.Core.Tests
             _fixture = new Fixture();
             _fixture.Customize(new AutoFakeItEasyCustomization());
 
-            var eventsMediator = new EventsMediator(_contentEvents, _mediator, settings);
+            var eventsMediator = new EventsMediator(_contentEvents, approvalEngineEvents, _mediator, settings);
 
             eventsMediator.Initialize();
         }

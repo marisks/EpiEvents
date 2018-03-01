@@ -2,6 +2,7 @@ using System;
 using EpiEvents.Core.Common;
 using EpiEvents.Core.Events;
 using EPiServer;
+using EPiServer.Approvals;
 using EPiServer.Core;
 using MediatR;
 
@@ -9,12 +10,14 @@ namespace EpiEvents.Core
 {
     public class EventsMediator
     {
+        private readonly IApprovalEngineEvents _approvalEngineEvents;
         private readonly ISettings _settings;
         private readonly IContentEvents _contentEvents;
         private readonly IMediator _mediator;
 
-        public EventsMediator(IContentEvents contentEvents, IMediator mediator, ISettings settings)
+        public EventsMediator(IContentEvents contentEvents, IApprovalEngineEvents approvalEngineEvents, IMediator mediator, ISettings settings)
         {
+            _approvalEngineEvents = approvalEngineEvents ?? throw new ArgumentNullException(nameof(approvalEngineEvents));
             _settings = settings ?? throw new ArgumentNullException(nameof(settings));
             _contentEvents = contentEvents ?? throw new ArgumentNullException(nameof(contentEvents));
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
@@ -60,6 +63,8 @@ namespace EpiEvents.Core
             _contentEvents.DeletedContentVersion += OnDeletedContentVersion;
             _contentEvents.CreatingContent += OnCreatingContent;
             _contentEvents.CreatedContent += OnCreatedContent;
+
+            _approvalEngineEvents.StepStarted += OnStepStarted;
         }
 
         private void OnCreatedContent(object sender, ContentEventArgs e)
@@ -234,6 +239,11 @@ namespace EpiEvents.Core
         private void OnCheckedInContent(object sender, ContentEventArgs e)
         {
             AsyncHelper.RunSync(() => _mediator.Publish(CheckedInContent.FromContentEventArgs(e)));
+        }
+
+        private void OnStepStarted(ApprovalStepEventArgs e)
+        {
+            AsyncHelper.RunSync(() => _mediator.Publish(StepStarted.FromApprovalStepEventArgs(e)));
         }
     }
 }

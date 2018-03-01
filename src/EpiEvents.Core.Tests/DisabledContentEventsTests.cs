@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using EpiEvents.Core.Common;
 using EpiEvents.Core.Events;
 using EPiServer;
+using EPiServer.Approvals;
 using EPiServer.Core;
 using FakeItEasy;
 using MediatR;
@@ -19,11 +20,12 @@ namespace EpiEvents.Core.Tests
         public DisabledContentEventsTests()
         {
             _contentEvents = FakeItEasy.A.Fake<IContentEvents>();
+            var approvalEngineEvents = FakeItEasy.A.Fake<IApprovalEngineEvents>();
             _mediator = FakeItEasy.A.Fake<IMediator>();
             var settings = FakeItEasy.A.Fake<ISettings>();
             FakeItEasy.A.CallTo(() => settings.EnableLoadingEvents).Returns(false);
 
-            var eventsMediator = new EventsMediator(_contentEvents, _mediator, settings);
+            var eventsMediator = new EventsMediator(_contentEvents, approvalEngineEvents, _mediator, settings);
 
             eventsMediator.Initialize();
         }
