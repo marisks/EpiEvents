@@ -16,7 +16,6 @@ namespace EpiEvents.Core.Tests
     {
         private readonly IContentEvents _contentEvents;
         private readonly IMediator _mediator;
-        private readonly Fixture _fixture;
 
         public DisabledContentEventsTests()
         {
@@ -24,9 +23,6 @@ namespace EpiEvents.Core.Tests
             _mediator = FakeItEasy.A.Fake<IMediator>();
             var settings = FakeItEasy.A.Fake<ISettings>();
             FakeItEasy.A.CallTo(() => settings.EnableLoadingEvents).Returns(false);
-
-            _fixture = new Fixture();
-            _fixture.Customize(new AutoFakeItEasyCustomization());
 
             var eventsMediator = new EventsMediator(_contentEvents, _mediator, settings);
 
