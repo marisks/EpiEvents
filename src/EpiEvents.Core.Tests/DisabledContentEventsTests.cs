@@ -30,10 +30,10 @@ namespace EpiEvents.Core.Tests
 
         [FactoryMethodData(typeof(DisabledContentEventsTests), nameof(GetParameters))]
         public void it_does_not_publish_notification_from_event<TEvent, TNotification>(
-            TEvent ev, TNotification _, Action<IContentEvents, TEvent> act)
+            TEvent ev, TNotification _, Action<IContentEvents, TEvent> raise)
             where TNotification : ValueObject<TNotification>, INotification
         {
-            act(_contentEvents, ev);
+            raise(_contentEvents, ev);
 
             _mediator.ShouldNotPublishNotificationWith<TNotification>();
         }

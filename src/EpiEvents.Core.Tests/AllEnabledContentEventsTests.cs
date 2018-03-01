@@ -35,10 +35,10 @@ namespace EpiEvents.Core.Tests
 
         [FactoryMethodData(typeof(AllEnabledContentEventsTests), nameof(GetParameters))]
         public void it_publishes_notification_from_event<TEvent, TNotification>(
-            TEvent ev, TNotification expected, Action<IContentEvents, TEvent> act)
+            TEvent ev, TNotification expected, Action<IContentEvents, TEvent> raise)
             where TNotification : ValueObject<TNotification>, INotification
         {
-            act(_contentEvents, ev);
+            raise(_contentEvents, ev);
 
             _mediator.ShouldPublishNotificationWith<TNotification>(actual => actual == expected);
         }
