@@ -14,13 +14,13 @@ using System.Linq;
 
 namespace EpiEvents.Core.Tests
 {
-    public class EventsMediatorInitializedTests
+    public class AllEnabledContentEventsTests
     {
         private readonly IContentEvents _contentEvents;
         private readonly IMediator _mediator;
         private readonly Fixture _fixture;
 
-        public EventsMediatorInitializedTests()
+        public AllEnabledContentEventsTests()
         {
             _contentEvents = FakeItEasy.A.Fake<IContentEvents>();
             _mediator = FakeItEasy.A.Fake<IMediator>();
@@ -35,7 +35,7 @@ namespace EpiEvents.Core.Tests
             eventsMediator.Initialize();
         }
 
-        [FactoryMethodData(typeof(EventsMediatorInitializedTests), nameof(GetParameters))]
+        [FactoryMethodData(typeof(AllEnabledContentEventsTests), nameof(GetParameters))]
         public void it_publishes_notification_from_event<TEvent, TNotification>(
             TEvent ev, TNotification expected, Action<IContentEvents, TEvent> act)
             where TNotification : ValueObject<TNotification>, INotification

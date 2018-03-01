@@ -12,13 +12,13 @@ using Ploeh.AutoFixture.AutoFakeItEasy;
 
 namespace EpiEvents.Core.Tests
 {
-    public class EventsMediatorDisabledLoadingEventsTests
+    public class DisabledContentEventsTests
     {
         private readonly IContentEvents _contentEvents;
         private readonly IMediator _mediator;
         private readonly Fixture _fixture;
 
-        public EventsMediatorDisabledLoadingEventsTests()
+        public DisabledContentEventsTests()
         {
             _contentEvents = FakeItEasy.A.Fake<IContentEvents>();
             _mediator = FakeItEasy.A.Fake<IMediator>();
@@ -33,7 +33,7 @@ namespace EpiEvents.Core.Tests
             eventsMediator.Initialize();
         }
 
-        [FactoryMethodData(typeof(EventsMediatorDisabledLoadingEventsTests), nameof(GetParameters))]
+        [FactoryMethodData(typeof(DisabledContentEventsTests), nameof(GetParameters))]
         public void it_does_not_publish_notification_from_event<TEvent, TNotification>(
             TEvent ev, TNotification _, Action<IContentEvents, TEvent> act)
             where TNotification : ValueObject<TNotification>, INotification
