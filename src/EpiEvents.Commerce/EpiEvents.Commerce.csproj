@@ -1,20 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A2B2296-2991-411B-8648-1249DC62BE68}</ProjectGuid>
+    <ProjectGuid>{5FF82759-DEDF-46AC-B975-9F34493E69DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EpiEvents.Core</RootNamespace>
-    <AssemblyName>EpiEvents.Core</AssemblyName>
+    <RootNamespace>EpiEvents.Commerce</RootNamespace>
+    <AssemblyName>EpiEvents.Commerce</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -84,11 +83,9 @@
     </Reference>
     <Reference Include="MediatR, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\MediatR.3.0.0\lib\net45\MediatR.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -101,7 +98,7 @@
       <HintPath>..\..\packages\System.ComponentModel.Annotations.4.4.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Data.SqlClient, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -134,7 +131,6 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -142,19 +138,15 @@
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -164,62 +156,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AsyncHelper.cs" />
-    <Compile Include="DefaultSettings.cs" />
-    <Compile Include="Events\ApprovalAborted.cs" />
-    <Compile Include="Events\ApprovalApproved.cs" />
-    <Compile Include="Events\ApprovalNotificationBase.cs" />
-    <Compile Include="Events\ApprovalRejected.cs" />
-    <Compile Include="Events\ApprovalStarted.cs" />
-    <Compile Include="Events\ApprovalStepNotificationBase.cs" />
-    <Compile Include="Events\CheckedInContent.cs" />
-    <Compile Include="Events\CheckedOutContent.cs" />
-    <Compile Include="Events\CheckingInContent.cs" />
-    <Compile Include="EventsMediator.cs" />
-    <Compile Include="Events\CheckingOutContent.cs" />
-    <Compile Include="Events\CopiedContent.cs" />
-    <Compile Include="Events\CopyiedContent.cs" />
-    <Compile Include="Events\CopyingContent.cs" />
-    <Compile Include="Events\CreatedContent.cs" />
-    <Compile Include="Events\CreatedContentLanguage.cs" />
-    <Compile Include="Events\CreatedLanguageBranch.cs" />
-    <Compile Include="Events\CreatingContent.cs" />
-    <Compile Include="Events\CreatingContentLanguage.cs" />
-    <Compile Include="Events\CreatingLanguageBranch.cs" />
-    <Compile Include="Events\DeletedContent.cs" />
-    <Compile Include="Events\DeletedContentLanguage.cs" />
-    <Compile Include="Events\DeletedContentVersion.cs" />
-    <Compile Include="Events\DeletingContent.cs" />
-    <Compile Include="Events\DeletingContentLanguage.cs" />
-    <Compile Include="Events\DeletingContentVersion.cs" />
-    <Compile Include="Events\FailedLoadingContent.cs" />
-    <Compile Include="Events\LoadedChildren.cs" />
-    <Compile Include="Events\FailedLoadingChildren.cs" />
-    <Compile Include="Events\LoadedContent.cs" />
-    <Compile Include="Events\LoadingChildren.cs" />
-    <Compile Include="Events\LoadingContent.cs" />
-    <Compile Include="Events\LoadedDefaultContent.cs" />
-    <Compile Include="Events\LoadingDefaultContent.cs" />
-    <Compile Include="Events\MovedContent.cs" />
-    <Compile Include="Events\MovingContent.cs" />
-    <Compile Include="Events\PublishedContent.cs" />
-    <Compile Include="Events\PublishingContent.cs" />
-    <Compile Include="Events\RejectedContent.cs" />
-    <Compile Include="Events\RejectingContent.cs" />
-    <Compile Include="Events\RequestedApproval.cs" />
-    <Compile Include="Events\RequestingApproval.cs" />
-    <Compile Include="Events\SaveContentNotificationBase.cs" />
-    <Compile Include="Events\SavedContent.cs" />
-    <Compile Include="Events\SavingContent.cs" />
-    <Compile Include="Events\ScheduledContent.cs" />
-    <Compile Include="Events\SchedulingContent.cs" />
-    <Compile Include="Events\ApprovalStepApproved.cs" />
-    <Compile Include="Events\ApprovalStepRejected.cs" />
-    <Compile Include="Events\ApprovalStepStarted.cs" />
-    <Compile Include="Initialization.cs" />
-    <Compile Include="ISettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Common\ValueObject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EpiEvents.Core\EpiEvents.Core.csproj">
+      <Project>{3a2b2296-2991-411b-8648-1249dc62be68}</Project>
+      <Name>EpiEvents.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -232,11 +175,4 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Microsoft.Net.Compilers.2.0.1\build\Microsoft.Net.Compilers.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
