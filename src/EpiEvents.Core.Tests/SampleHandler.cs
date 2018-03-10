@@ -3,9 +3,9 @@ using MediatR;
 
 namespace EpiEvents.Core.Tests
 {
-    public class SampleHandler : INotificationHandler<CreatedContent>
+    public class SampleHandler : NotificationHandler<CreatedContent>
     {
-        public void Handle(CreatedContent notification)
+        protected override void HandleCore(CreatedContent notification)
         {
             // Handle your event
         }
