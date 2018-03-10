@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoFixture;
+using AutoFixture.AutoFakeItEasy;
 using EpiEvents.Core.Events;
 using EPiServer;
 using FluentAssertions;
 using Optional;
-using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.AutoFakeItEasy;
 
 namespace EpiEvents.Core.Tests
 {
@@ -17,7 +17,7 @@ namespace EpiEvents.Core.Tests
         {
             var actual = act(ev);
 
-            actual.ShouldBeEquivalentTo(expected);
+            actual.Should().BeEquivalentTo(expected);
         }
 
         public static IEnumerable<object[]> GetParameters()

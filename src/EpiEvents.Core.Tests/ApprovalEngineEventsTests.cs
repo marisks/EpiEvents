@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using AutoFixture;
+using AutoFixture.AutoFakeItEasy;
 using EpiEvents.Core.Common;
 using EpiEvents.Core.Events;
 using EPiServer.Approvals;
 using EPiServer.Core;
 using FakeItEasy;
 using MediatR;
-using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.AutoFakeItEasy;
 
 namespace EpiEvents.Core.Tests
 {
@@ -57,7 +57,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 ApprovalStepStarted.FromApprovalStepEventArgs(args),
                 A<IApprovalEngineEvents, ApprovalStepEventArgs>(
-                    (approvalEngineEvents, e) => approvalEngineEvents.StepStarted += Raise.With<ApprovalStepEventHandler>(e))
+                    (approvalEngineEvents, e) => approvalEngineEvents.StepStarted += Raise.FreeForm<ApprovalStepEventHandler>.With(e))
             };
 
             yield return new[]
@@ -65,7 +65,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 ApprovalStepApproved.FromApprovalStepEventArgs(args),
                 A<IApprovalEngineEvents, ApprovalStepEventArgs>(
-                    (approvalEngineEvents, e) => approvalEngineEvents.StepApproved += Raise.With<ApprovalStepEventHandler>(e))
+                    (approvalEngineEvents, e) => approvalEngineEvents.StepApproved += Raise.FreeForm<ApprovalStepEventHandler>.With(e))
             };
 
             yield return new[]
@@ -73,7 +73,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 ApprovalStepRejected.FromApprovalStepEventArgs(args),
                 A<IApprovalEngineEvents, ApprovalStepEventArgs>(
-                    (approvalEngineEvents, e) => approvalEngineEvents.StepRejected += Raise.With<ApprovalStepEventHandler>(e))
+                    (approvalEngineEvents, e) => approvalEngineEvents.StepRejected += Raise.FreeForm<ApprovalStepEventHandler>.With(e))
             };
         }
 
@@ -86,7 +86,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 ApprovalStarted.FromApprovalEventArgs(args),
                 A<IApprovalEngineEvents, ApprovalEventArgs>(
-                    (approvalEngineEvents, e) => approvalEngineEvents.Started += Raise.With<ApprovalEventHandler>(e))
+                    (approvalEngineEvents, e) => approvalEngineEvents.Started += Raise.FreeForm<ApprovalEventHandler>.With(e))
             };
 
             yield return new[]
@@ -94,7 +94,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 ApprovalAborted.FromApprovalEventArgs(args),
                 A<IApprovalEngineEvents, ApprovalEventArgs>(
-                    (approvalEngineEvents, e) => approvalEngineEvents.Aborted += Raise.With<ApprovalEventHandler>(e))
+                    (approvalEngineEvents, e) => approvalEngineEvents.Aborted += Raise.FreeForm<ApprovalEventHandler>.With(e))
             };
 
             yield return new[]
@@ -102,7 +102,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 ApprovalApproved.FromApprovalEventArgs(args),
                 A<IApprovalEngineEvents, ApprovalEventArgs>(
-                    (approvalEngineEvents, e) => approvalEngineEvents.Approved += Raise.With<ApprovalEventHandler>(e))
+                    (approvalEngineEvents, e) => approvalEngineEvents.Approved += Raise.FreeForm<ApprovalEventHandler>.With(e))
             };
 
             yield return new[]
@@ -110,7 +110,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 ApprovalRejected.FromApprovalEventArgs(args),
                 A<IApprovalEngineEvents, ApprovalEventArgs>(
-                    (approvalEngineEvents, e) => approvalEngineEvents.Rejected += Raise.With<ApprovalEventHandler>(e))
+                    (approvalEngineEvents, e) => approvalEngineEvents.Rejected += Raise.FreeForm<ApprovalEventHandler>.With(e))
             };
         }
 

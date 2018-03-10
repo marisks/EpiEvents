@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using AutoFixture;
+using AutoFixture.AutoFakeItEasy;
 using EpiEvents.Core.Common;
 using EpiEvents.Core.Events;
 using EPiServer;
@@ -7,8 +9,6 @@ using EPiServer.Approvals;
 using EPiServer.Core;
 using FakeItEasy;
 using MediatR;
-using Ploeh.AutoFixture;
-using Ploeh.AutoFixture.AutoFakeItEasy;
 
 namespace EpiEvents.Core.Tests
 {
@@ -58,7 +58,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 LoadingChildren.FromChildrenEventArgs(args),
                 A<IContentEvents, ChildrenEventArgs>(
-                    (contentEvents, e) => contentEvents.LoadingChildren += Raise.With<ChildrenEventHandler>(null, e))
+                    (contentEvents, e) => contentEvents.LoadingChildren += Raise.FreeForm<ChildrenEventHandler>.With(null, e))
             };
 
             yield return new[]
@@ -66,7 +66,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 LoadedChildren.FromChildrenEventArgs(args),
                 A<IContentEvents, ChildrenEventArgs>(
-                    (contentEvents, e) => contentEvents.LoadedChildren += Raise.With<ChildrenEventHandler>(null, e))
+                    (contentEvents, e) => contentEvents.LoadedChildren += Raise.FreeForm<ChildrenEventHandler>.With(null, e))
             };
 
             yield return new[]
@@ -74,7 +74,7 @@ namespace EpiEvents.Core.Tests
                 args,
                 FailedLoadingChildren.FromChildrenEventArgs(args),
                 A<IContentEvents, ChildrenEventArgs>(
-                    (contentEvents, e) => contentEvents.FailedLoadingChildren += Raise.With<ChildrenEventHandler>(null, e))
+                    (contentEvents, e) => contentEvents.FailedLoadingChildren += Raise.FreeForm<ChildrenEventHandler>.With(null, e))
             };
         }
 

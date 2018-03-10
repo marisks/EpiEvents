@@ -17,7 +17,7 @@ namespace EpiEvents.Core.Tests
         public static void ShouldNotPublishNotificationWith<T>(this IMediator mediator)
             where T : INotification
         {
-            FakeItEasy.A.CallTo(() => mediator.Publish(A<T>.Ignored, A<CancellationToken>.Ignored)).MustNotHaveHappened();
+            A.CallTo(() => mediator.Publish(A<T>.Ignored, A<CancellationToken>.Ignored)).MustNotHaveHappened();
         }
     }
 }
