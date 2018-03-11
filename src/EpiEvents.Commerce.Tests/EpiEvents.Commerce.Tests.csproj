@@ -239,11 +239,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatalogKeyEventBroadcasterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EpiEvents.Commerce\EpiEvents.Commerce.csproj">
+      <Project>{5ff82759-dedf-46ac-b975-9f34493e69dd}</Project>
+      <Name>EpiEvents.Commerce</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EpiEvents.Core.Tests\EpiEvents.Core.Tests.csproj">
+      <Project>{64ad2a73-001a-443b-959d-2ada82b83064}</Project>
+      <Name>EpiEvents.Core.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EpiEvents.Core\EpiEvents.Core.csproj">
+      <Project>{3a2b2296-2991-411b-8648-1249dc62be68}</Project>
+      <Name>EpiEvents.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
