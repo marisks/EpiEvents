@@ -4,7 +4,7 @@ using System.Threading;
 using FakeItEasy;
 using MediatR;
 
-namespace EpiEvents.Core.Tests
+namespace EpiEvents.Core.Tests.Base
 {
     public static class MediatorAssertionExtensions
     {

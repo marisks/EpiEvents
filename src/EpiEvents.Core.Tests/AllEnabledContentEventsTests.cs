@@ -9,6 +9,7 @@ using MediatR;
 using System.Linq;
 using AutoFixture;
 using AutoFixture.AutoFakeItEasy;
+using EpiEvents.Core.Tests.Base;
 using EPiServer.Approvals;
 
 namespace EpiEvents.Core.Tests

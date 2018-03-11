@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Fixie;
 
-namespace EpiEvents.Core.Tests
+namespace EpiEvents.Core.Tests.Base
 {
     public class FromFactoryMethodTestConvention : Convention
     {

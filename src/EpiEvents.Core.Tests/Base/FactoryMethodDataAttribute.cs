@@ -1,6 +1,6 @@
 using System;
 
-namespace EpiEvents.Core.Tests
+namespace EpiEvents.Core.Tests.Base
 {
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
     public class FactoryMethodDataAttribute : Attribute

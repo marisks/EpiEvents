@@ -4,6 +4,7 @@ using System.Linq;
 using AutoFixture;
 using AutoFixture.AutoFakeItEasy;
 using EpiEvents.Core.Events;
+using EpiEvents.Core.Tests.Base;
 using EPiServer;
 using FluentAssertions;
 using Optional;

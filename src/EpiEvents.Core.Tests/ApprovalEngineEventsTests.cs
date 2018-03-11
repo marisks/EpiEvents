@@ -4,6 +4,7 @@ using AutoFixture;
 using AutoFixture.AutoFakeItEasy;
 using EpiEvents.Core.Common;
 using EpiEvents.Core.Events;
+using EpiEvents.Core.Tests.Base;
 using EPiServer.Approvals;
 using EPiServer.Core;
 using FakeItEasy;
