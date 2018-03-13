@@ -36,5 +36,16 @@ namespace EpiEvents.Commerce.Tests
 
             _mediator.ShouldPublishNotificationWith<InventoryUpdated>(actual => actual == expected);
         }
+
+        public void it_publishes_PriceUpdated_notification()
+        {
+            var keys = _fixture.CreateMany<CatalogKey>().ToArray();
+            var args = new PriceUpdateEventArgs(keys);
+            var expected = PriceUpdated.FromPriceUpdateEventArgs(args);
+
+            _catalogKeyEventBroadcaster.OnPriceUpdated(this, args);
+
+            _mediator.ShouldPublishNotificationWith<PriceUpdated>(actual => actual == expected);
+        }
     }
 }

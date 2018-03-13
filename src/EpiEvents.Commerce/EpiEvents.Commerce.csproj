@@ -223,6 +223,7 @@
   <ItemGroup>
     <Compile Include="EventsMediator.cs" />
     <Compile Include="Events\InventoryUpdated.cs" />
+    <Compile Include="Events\PriceUpdated.cs" />
     <Compile Include="Initialization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

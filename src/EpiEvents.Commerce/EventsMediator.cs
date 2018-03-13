@@ -20,11 +20,17 @@ namespace EpiEvents.Commerce
         public void Initialize()
         {
             _catalogKeyEventBroadcaster.InventoryUpdated += OnInventoryUpdated;
+            _catalogKeyEventBroadcaster.PriceUpdated += OnPriceUpdated;
         }
 
         private void OnInventoryUpdated(object sender, InventoryUpdateEventArgs e)
         {
             AsyncHelper.RunSync(() => _mediator.Publish(InventoryUpdated.FromInventoryUpdateEventArgs(e)));
+        }
+
+        private void OnPriceUpdated(object sender, PriceUpdateEventArgs e)
+        {
+            AsyncHelper.RunSync(() => _mediator.Publish(PriceUpdated.FromPriceUpdateEventArgs(e)));
         }
     }
 }
