@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>@description@</description>
     <releaseNotes>@releaseNotes@</releaseNotes>
-    <copyright>Copyright Maris Krivtezs 2017</copyright>
+    <copyright>@copyright@</copyright>
     <tags>Episerver</tags>
     @dependencies@
     @references@
