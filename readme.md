@@ -4,12 +4,15 @@ _EpiEvents_ is a library which makes it easier to handle _Episerver_ events by u
 
 _EpiEvents.Core_ implements _Episerver_ content event handling.
 
+_EpiEvents.Comerce_ implements _Episerver Commerce_ event handling.
+
 # Install
 
 Install using _NuGet_.
 
 ```
 Install-Package EpiEvents.Core
+Install-Package EpiEvents.Commerce
 ```
 
 # Configure
